@@ -1,6 +1,7 @@
 import exampleVideoData from '/src/data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
+import Search from './Search.js';
 
 /*var App = () => (
   <div>
@@ -24,7 +25,7 @@ import VideoPlayer from './VideoPlayer.js';
 // `var` declarations will only exist globally where explicitly defined
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -33,21 +34,35 @@ class App extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.updateVideoList = this.updateVideoList.bind(this);
   }
   
   handleClick(video) {
     this.setState(state => ({
       currentPlayerVid: video
     }));
-    console.log(this.state.currentPlayerVid);
+  }
+
+  handleSearch(input) {
+    
+    // searchYouTube(options q set to input from search box, this.updateVideoList?)
+    
+    console.log('hi');
+  }
+
+  updateVideoList(data) {
+    this.setState(state => ({
+      videoList: data
+    }));
   }
 
   render() {
     return (
       <div>
-        <nav onClick={this.handleClick.bind(this, exampleVideoData[0])} className="navbar">
+        <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here </h5></div>
+            <Search handleSearch = {this.handleSearch}/>
           </div>
         </nav>
         <div className="row">
