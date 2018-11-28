@@ -1,14 +1,3 @@
-import YOUTUBE_API_KEY from './config/youtube.js';
-
-var options = {
-  'key': YOUTUBE_API_KEY,
-  'q': '',
-  'part': 'snippet',
-  'maxResults': '5',
-  'type': 'videos',
-  'videoEmbeddable': 'true'
-};
-
 var searchYouTube = (options, callback) => {
   // TODO
   //use jquery to send a get request to the search endpoint (/youtube/v3/search)
@@ -16,9 +5,10 @@ var searchYouTube = (options, callback) => {
   //options --> object with: query, max, key
   $.ajax({
     data: options,
-    dataType: 'application/json',
+    dataType: 'jsonp',
+    contentType: 'application/json',
     type: 'GET',
-    url: 'https://googleapis.com/youtube/v3/search',
+    url: 'https://www.googleapis.com/youtube/v3/search',
     success: function(data) {
       console.log(data);
     },
