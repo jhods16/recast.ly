@@ -26,18 +26,15 @@ class App extends React.Component {
 
   handleSearch() {
     var options = {
-      'key': this.props.YOUTUBE_API_KEY,
-      'q': this.state.input,
-      'part': 'snippet',
-      'maxResults': '5',
-      'type': 'video',
-      'videoEmbeddable': 'true'
+      key: this.props.YOUTUBE_API_KEY,
+      query: this.state.input,
+      max: 5
     };
-    console.log(this.props);
+  
     this.props.searchYouTube(options, (data)=>
       this.setState({
-        currentPlayerVid: data.items[0],
-        videoList: data.items
+        currentPlayerVid: data[0],
+        videoList: data
       })
     );
   }
