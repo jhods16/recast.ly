@@ -10,7 +10,7 @@ var searchYouTube = (options, callback) => {
     type: 'GET',
     url: 'https://www.googleapis.com/youtube/v3/search',
     success: function(data) {
-      console.log(data);
+      callback(data);
     },
     error: function(err) {
       console.log(err);
